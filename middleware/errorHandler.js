@@ -1,6 +1,7 @@
 const { logEvent } = require('../middleware/logger');
 
 const errorHandler = (err, req, res, next) => {
+  console.log(err);
   const message = `${err.name}-${err.message} ${req.method} ${req.url} ${req.headers.origin}`;
   logEvent(message, 'reqErrors.log');
   const status = res.statusCode ? res.statusCode : 500;
